@@ -3,4 +3,9 @@ john123,Pass123$,john@example.com,true
 ,pass123,john@example.com,false
 alice,short,alice@mail.com,false
 bob123,password,bobmail.com,false
-carol,password,carol@domain.com,true
+carol,password,carol@domain.com,false
+khanhnguyen,Password1!,khanh@domain.com,true
+dave123,Pass123$,john@example.com,false
+john123,NewPass1@,anotherjohn@example.com,false
+weakpass,Pass123,weak@gmail.com,false
+fe,Pass123@,feabc@gmail.com,false

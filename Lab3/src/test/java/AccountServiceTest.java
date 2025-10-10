@@ -1,5 +1,5 @@
 import letranbaophuc.example.AccountService;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
@@ -11,11 +11,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class AccountServiceTest {
 
-    private AccountService service;
+    private static AccountService service;
 
-    @BeforeEach
-    void setUp() {
+    @BeforeAll
+    static void setUp() {
         service = new AccountService();
+        try (PrintWriter pw = new PrintWriter("UnitTestResults.csv")) {
+            pw.println("username,password,email,expected,actual,result");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @ParameterizedTest(name = "Test {index} => username={0}, password={1}, email={2}, expected={3}")
@@ -25,7 +30,6 @@ public class AccountServiceTest {
         boolean actualResult = service.registerAccount(username, password, email);
 
         writeTestResult(username, password, email, expectedResult, actualResult);
-
         assertEquals(expectedResult, actualResult);
     }
 

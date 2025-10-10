@@ -6,7 +6,7 @@ import java.util.Set;
 public class AccountService {
 
     private final Set<String> existingUsers = new HashSet<>();
-
+    private final Set<String> existingEmails = new HashSet<>();
     public boolean registerAccount(String username, String password, String email) {
         if (isNullOrEmpty(username) || isNullOrEmpty(password) || isNullOrEmpty(email)) {
             return false;
@@ -17,7 +17,14 @@ public class AccountService {
         if (!isValidPassword(password) || !isValidEmail(email)) {
             return false;
         }
+
+
+        if (existingEmails.contains(email)) {
+            return false;
+        }
+
         existingUsers.add(username);
+        existingEmails.add(email);
         return true;
     }
 
