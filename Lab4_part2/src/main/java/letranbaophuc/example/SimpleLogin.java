@@ -20,7 +20,7 @@ public class SimpleLogin implements LoginHandler {
     }
 
     public static void main(String[] args) {
-        LoginHandler user = new SimpleLogin();  
+        LoginHandler user = new SimpleLogin();
         user.login("admin", "1234");
         user.login("guest", "wrongpass");
     }
